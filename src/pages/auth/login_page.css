@@ -1,0 +1,36 @@
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: red;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .submit-btn:hover {
+    background-color: darkred;
+  }
+
+
+  .login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+  }
+
+  .brand-section {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .brand-name {
+    font-size: 48px;
+    color: red;
+    font-weight: bold;
+  }
+  
