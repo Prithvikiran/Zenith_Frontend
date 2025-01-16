@@ -1,4 +1,4 @@
-import './querybox'
+import './querybox.css'
 function querybox({type,className,placeholder,name}){
     return(
         <div className={className}>

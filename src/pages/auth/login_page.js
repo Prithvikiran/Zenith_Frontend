@@ -1,22 +1,41 @@
+import Button from 'elements/button';
+import Form from 'components/form';
+import Link from 'elements/link';
+import Querybox from 'elements/querybox';
+import Pic from 'elements/image';
+import './login_page.css';
 
-import 'elements/button'
-import Login_form from 'components/loginform';
+const fields = [
+  { type: "text", placeholder: "Enter Username", name: "username" },
+  { type: "password", placeholder: "Enter Password", name: "password" },
+];
 
-
-function Log()
-{
-    return(
-        
+function Log() {
+  return (
     <div className="login-page">
-    <div className="brand-section">
-    <img src='logo.png' alt="Zenith Logo" className="brand-logo" />
-    <h1 className="brand-name">Zenith</h1>
-    <p>Zenith helps you connect and share with the people in your life.</p>
-    <Login_form></Login_form>
-     
+      <div className="brand-section">
+        <h1 className="brand-name">Zenith</h1>
+        <Pic src="logo.png" alt="zenith-logo" className="lg" />
+        <p>Zenith helps you connect and shaljllre with the people in your life.</p>
+        <Form className="frm">
+
+        {fields.map((field, index) => (
+            <Querybox key={index} {...field} className="form-group" />
+          ))} 
+          <Button type="submit" className="btn" text="Log in" />
+          <Link href="#" className="forgot-password" text="Forgotten Password" />
+          <hr />
+          <Button type="submit" className="btn" text="Create new account" />
+
+       
+      
+        </Form>
+      
+         
+      </div>
     </div>
-    </div>
-    );
+  );
 }
 
-export default Log ;
+export default Log;
+

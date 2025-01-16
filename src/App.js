@@ -1,11 +1,18 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import './App.css'; 
 import Header from './elements/header';
+import './App.css';
 import Login from './pages/auth/login_page'
 import Signup  from "pages/auth/signup_page";
 
 
+
+
+const fields = [
+  { type: "text", placeholder: "Username", name: "username" },
+  { type: "email", placeholder: "Email", name: "email" },
+  { type: "password", placeholder: "Password", name: "password" },
+];
 
 function App() {
   return (
@@ -30,6 +37,7 @@ function App() {
         <Route path="/" element={
              <>
              <Header />
+    
            </>
         } />
 
