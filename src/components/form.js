@@ -8,10 +8,17 @@ import Hr from 'elements/hr';
 
 function Form({ className, children, fields }) {
 
-    const [formValues, setFormValues] = useState({
-      username: "",
-      password: "",
-    });
+  
+  const initialFormValues = fields.reduce((acc, field) => {
+   
+    if (field.name) {
+      acc[field.name] = ""; 
+    }
+    return acc;
+  }, {});
+
+  const [formValues, setFormValues] = useState(initialFormValues);
+
   
     
     const handleChange = (e) => {
