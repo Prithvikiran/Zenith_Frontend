@@ -5,8 +5,15 @@ import Querybox from 'elements/querybox';
 import Link from 'elements/link';
 import Button from 'elements/button';
 import Hr from 'elements/hr';
+import submitform from 'services/login';
 
-function Form({ className, children, fields }) {
+
+async function Form({ className, children, fields }) {
+
+  const [formValues, setFormValues] = useState(initialFormValues);
+  const [data,setData]=useState(null);
+  const [error,setError]=useState(null);
+  const [loader,setLoader]=useState(null);
 
   
   const initialFormValues = fields.reduce((acc, field) => {
@@ -15,12 +22,8 @@ function Form({ className, children, fields }) {
       acc[field.name] = ""; 
     }
     return acc;
-  }, {});
+  });
 
-  const [formValues, setFormValues] = useState(initialFormValues);
-
-  
-    
     const handleChange = (e) => {
       const { name, value } = e.target;
       setFormValues((prevValues) => ({
@@ -32,12 +35,21 @@ function Form({ className, children, fields }) {
    
     const handleSubmit = (e) => {
       e.preventDefault();
-      console.log("Form Values:", formValues); 
+      setLoader(true);  
+      setError(null);  
+      setData(null);    
+      
+      try {
+        const response = submitform(formValues);  
+        setData(response);  
+      } catch (err) {
+        setError(err.message || "An error occurred while submitting the form.");
+      } finally {
+        setLoader(false); 
+      }
     };
   
-    
   
-
   const renderField = (field) => {
     switch (field.type) {
       case "input": 
@@ -96,5 +108,6 @@ function Form({ className, children, fields }) {
     </form>
   );
 }
+
 
 export default Form;
