@@ -1,13 +1,13 @@
-import Button from 'elements/button';
 import Form from 'components/form';
-import Querybox from 'elements/querybox';
 import './signup.css'
+import endpoints from '../../config';
+
 
 const fields = [
     { inputType: "text", placeholder: "Username", name: "username" , type:"input"},
     { inputType: "email", placeholder: "Email", name: "email" ,type:"input"},
     { inputType: "password", placeholder: "Password", name: "password",type:"input"},
-    {type:"button",className:"btn",text:"Register"}
+    {type:"button",className:"btn",text:"Register",endpoint:endpoints.register}
   ];
 
 function Signup() {
