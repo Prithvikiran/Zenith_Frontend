@@ -1,3 +1,6 @@
+import endpoints from "config";
+import { setSession, handleUnauthorizedError } from "./session";
+
 async function connect({ formValues, apiEndpoint, method, headers }) {
     try {
       const response = await fetch(apiEndpoint, {
@@ -11,6 +14,10 @@ async function connect({ formValues, apiEndpoint, method, headers }) {
       }
   
       const data = await response.json();
+      if (apiEndpoint===endpoints.login)
+      {
+        setSession(data);
+      }
       return data;
     } catch (error) {
       throw new Error(error.message || `Something went wrong`);

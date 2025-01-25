@@ -49,36 +49,25 @@ function Form({ className, children, fields = [] }) {
     try {
       const response = await connect({
         formValues,
-        apiEndpoint: endpoint,
-        method: "POST",
+        apiEndpoint:endpoint,
+        method: "POST", 
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json" 
         },
         body: formValues,
-      });
-
-      // console.log("1. This is the response", response);
-      // console.log("\n2. This is the token", response.data.token);
-      // console.log("\n3. Data previous to set data:", data);
-
-      setData(response);
-      const token = response.data.token;
-      localStorage.setItem("authToken", token);
-      navigate("/dashboard");
-    } catch (err) {
-      if (err.response?.status === 401) {
-        console.error("Unauthorized access - logging out user");
-
-        localStorage.removeItem("authToken");
-        navigate("/login");
-      } else {
-        console.error("API error:", err);
-        setError(err.message || "An error occurred while submitting the form.");
-      }
-    } finally {
+      });   
+      
+    } catch (err)
+     {
+      setError(err.message || 'An error occurred while submitting the form.');
+      
+    }
+    finally {
       setLoader(false);
     }
+    // formRef.current.reset(); 
   };
+
   const renderField = (field) => {
     switch (field.type) {
       case 'input':
