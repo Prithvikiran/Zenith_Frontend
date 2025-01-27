@@ -6,6 +6,7 @@ import Link from 'elements/link';
 import Button from 'elements/button';
 import Hr from 'elements/hr';
 import connect  from 'services/api';
+import endpoints from 'config';
 
 
 function Form({ className, children, fields = [] }) {
@@ -18,7 +19,6 @@ function Form({ className, children, fields = [] }) {
   const [loader, setLoader] = useState(false);
   
   const endpoint = fields.find(field => field.endpoint)?.endpoint || "/"
-  //const formRef = useRef(null);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues((prevValues) => ({
@@ -27,17 +27,6 @@ function Form({ className, children, fields = [] }) {
     }));
   };
   
-  // const resetForm = () => {
-  //   setFormValues(() => {
-  //     const resetValues = {};
-  //     fields.forEach((field) => {
-  //       if (field.type === 'input') {
-  //         resetValues[field.name] = ''; 
-  //       }
-  //     });
-  //     return resetValues;
-  //   });
-  // };
 
 
   const handleSubmit = async (e) => {
@@ -55,14 +44,20 @@ function Form({ className, children, fields = [] }) {
           "Content-Type": "application/json" 
         },
         body: formValues,
-      });   
+      });
+      setData(response);
+      navigate('/post') // hardcoded the route - to be improvised 
+
+        
+     
+
+        
+     
+    
       
-    } catch (err)
-     {
+    } catch (err) {
       setError(err.message || 'An error occurred while submitting the form.');
-      
-    }
-    finally {
+    } finally {
       setLoader(false);
     }
     // formRef.current.reset(); 
@@ -82,6 +77,7 @@ function Form({ className, children, fields = [] }) {
           />
         );
       case 'button':
+        
         return (
           <Button
             key={field.name}
@@ -89,8 +85,9 @@ function Form({ className, children, fields = [] }) {
             type={field.buttonType || 'submit'}
             text={field.text}
             className={field.className}
-            onClick={() => field.onClick && field.onClick(navigate)} 
+            onClick={field.onClick} 
           />
+          
         );
       case 'link':
         return (

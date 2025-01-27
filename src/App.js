@@ -4,6 +4,7 @@ import Header from "./elements/header";
 import "./App.css";
 import Login from "./pages/auth/login_page";
 import Signup from "./pages/auth/signup_page";
+import Posts from "pages/posts/create_post";
 
 
 
@@ -19,6 +20,12 @@ function App() {
         <Route
           path="/login"
           element={<Login />}
+        />
+        <Route
+        
+        path="/post"
+        element={<Posts />}
+
         />
         
         <Route

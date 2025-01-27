@@ -12,7 +12,7 @@ async function connect({ formValues, apiEndpoint, method, headers }) {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-  
+      
       const data = await response.json();
       if (apiEndpoint===endpoints.login)
       {

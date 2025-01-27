@@ -5,7 +5,8 @@ console.log(API_BASE_URL)
 
 const endpoints = {
   register:`${API_BASE_URL}/auth/register`,
-  login:`${API_BASE_URL}/auth/login`
+  login:`${API_BASE_URL}/auth/login`,
+  dashboard:`${API_BASE_URL}/api/post`
 
 };
 

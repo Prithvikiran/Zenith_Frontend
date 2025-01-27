@@ -5,16 +5,21 @@ import './login_page.css';
 import endpoints from '../../config';
 import { useNavigate } from 'react-router-dom';
 
+
+function Log() {
+const navigate = useNavigate()
+
+
 const fields = [
   { type: "input", placeholder: "Enter Username", name: "username" ,inputType:"text"},
   { type: "input", placeholder: "Enter Password", name: "password",inputType:"password" },
-  { type: "button", text: "Log in", className: "btn",endpoint:endpoints.login },
+  { type: "button", text: "Log in", className: "btn",endpoint:endpoints.login, },
   { type: "link", text: "Forgotten Password", href: "#", className: "forgot-password" },
   {type:"hr",className:"hr"},
-  { type: "button",buttonType:"button", text: "Create new account", className: "btn",onClick: (navigate) => navigate('/signup')},
+  { type: "button",buttonType:"button", text: "Create new account", className: "btn",onClick:() => {navigate('/signup')}},
 ];
 
-function Log() {
+
   return (
     <div className="login-page">
       <div className="brand-section">
