@@ -4,8 +4,8 @@ import Header from "./elements/header";
 import "./App.css";
 import Login from "./pages/auth/login_page";
 import Signup from "./pages/auth/signup_page";
-import Posts from "pages/posts/create_post";
-
+import Posts from "pages/posts/create_post_page";
+import Check from "middlewares/protected"
 
 
 function App() {
@@ -21,12 +21,17 @@ function App() {
           path="/login"
           element={<Login />}
         />
-        <Route
-        
-        path="/post"
-        element={<Posts />}
+        <Route element={<Check/>}>
 
-        />
+         <Route
+
+         path="/post"
+          element={<Posts />}/>
+    
+        </Route>
+       
+
+
         
         <Route
           path="/"

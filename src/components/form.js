@@ -7,6 +7,7 @@ import Button from 'elements/button';
 import Hr from 'elements/hr';
 import connect  from 'services/api';
 import endpoints from 'config';
+import posts from 'pages/posts/create_post_page';
 
 
 function Form({ className, children, fields = [] }) {
@@ -47,13 +48,6 @@ function Form({ className, children, fields = [] }) {
       });
       setData(response);
       navigate('/post') // hardcoded the route - to be improvised 
-
-        
-     
-
-        
-     
-    
       
     } catch (err) {
       setError(err.message || 'An error occurred while submitting the form.');

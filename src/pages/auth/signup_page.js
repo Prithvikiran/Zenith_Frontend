@@ -1,5 +1,5 @@
 import Form from 'components/form';
-import './signup.css'
+import './signup_page.css'
 import endpoints from '../../config';
 
 

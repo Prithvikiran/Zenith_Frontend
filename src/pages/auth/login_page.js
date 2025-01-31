@@ -3,7 +3,8 @@ import Form from 'components/form';
 import Pic from 'elements/image';
 import './login_page.css';
 import endpoints from '../../config';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, Outlet, useNavigate } from 'react-router-dom';
+
 
 
 function Log() {
