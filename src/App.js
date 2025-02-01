@@ -5,7 +5,8 @@ import "./App.css";
 import Login from "./pages/auth/login_page";
 import Signup from "./pages/auth/signup_page";
 import Posts from "pages/posts/create_post_page";
-import Check from "middlewares/protected"
+import ProtectedRoute from "middlewares/protected"
+import PublicRoute from "middlewares/public";
 
 
 function App() {
@@ -13,15 +14,11 @@ function App() {
     <Router>
       <Header />
       <Routes>
-        <Route
-          path="/signup"
-          element={<Signup />}
-        />
-        <Route
-          path="/login"
-          element={<Login />}
-        />
-        <Route element={<Check/>}>
+      <Route element={<PublicRoute />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+        </Route>
+        <Route element={<ProtectedRoute/>}>
 
          <Route
 
